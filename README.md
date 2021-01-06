@@ -14,11 +14,11 @@ Was implemented before the realization of wishlists in DIM - now not very useful
 
 ### Import god rolls
 Import god rolls from file `docs/God Roll Weapons.xlsx`.  
-![God rolls](screenshots/godrolls.png "God rolls import")
+![God rolls](screenshots/godrolls_en.png "God rolls import")
 On import, the application gets weapon type and rpm from https://destinytracker.com/ by API.
 ### Import weapons from DIM
 Import user weapon from DIM CSV export `docs/destinyWeapons.csv`.
-![Weapons](screenshots/weapons.png "Weapons import\export")
+![Weapons](screenshots/weapons_en.png "Weapons import\export")
 Green cell - godroll, red row - a weapon not in god rolls list
 
 When importing, the application:
@@ -33,7 +33,7 @@ Armor stats maximizer
 
 ### Import armors from DIM
 Import user armor from DIM CSV export `docs/destinyArmor.csv`.
-![Armor](screenshots/armor.png "Armor import\export")
+![Armor](screenshots/armor_en.png "Armor import\export")
 When importing, the application calculates the sums of all possible pairs of attributes:
 - Mobility
 - Recovery
