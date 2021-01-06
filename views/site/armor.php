@@ -6,7 +6,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel app/models\ArmorsSearch */
 
-$this->title = 'Броня';
+$this->title = 'Armor';
 $this->registerJs("
     $('#show_armor_form').on('click', function(e) {
         e.preventDefault();
@@ -28,18 +28,18 @@ if (Yii::$app->user->isGuest) {
 } else { ?>
     <h1><?= $this->title; ?></h1>
     <br/>
-    <a href="#" id="show_armor_form">Обновлено: <?= Yii::$app->user->identity->last_sync_armor; ?></a>
+    <a href="#" id="show_armor_form">Updated: <?= Yii::$app->user->identity->last_sync_armor; ?></a>
     <br/>
     <hr/>
     <div id="update_armor_form" style="display: none;">
         <?php $form = \yii\bootstrap\ActiveForm::begin(['action' => ['site/sync-armor'], 'options' => ['enctype' => 'multipart/form-data']]) ?>
         <?= $form->field($model, 'csv_file')->fileInput()->label(false); ?>
-        <?= \yii\bootstrap\Html::button('Синхронизироваться', ['type' => 'submit', 'class' => 'btn btn-danger']); ?>
+        <?= \yii\bootstrap\Html::button('Import', ['type' => 'submit', 'class' => 'btn btn-danger']); ?>
 
         <?php \yii\bootstrap\ActiveForm::end() ?>
         <hr/>
     </div>
-    <a href="#" id="show_export_form">Экспортировать</a>
+    <a href="#" id="show_export_form">Export</a>
 
     <div id="export_armor_form" style="display: none;">
         <?php $form = \yii\bootstrap\ActiveForm::begin(['action' => ['site/export-armor']]) ?>
@@ -68,7 +68,7 @@ if (Yii::$app->user->isGuest) {
         ])->label(false); ?>
 
         <?= $form->field($export_model, 'export_other')->checkbox(); ?>
-        <?= \yii\bootstrap\Html::button('Экспортировать', ['type' => 'submit', 'class' => 'btn btn-danger']); ?>
+        <?= \yii\bootstrap\Html::button('Export', ['type' => 'submit', 'class' => 'btn btn-danger']); ?>
 
         <?php \yii\bootstrap\ActiveForm::end() ?>
         <hr/>
@@ -83,7 +83,7 @@ if (Yii::$app->user->isGuest) {
                 'Name',
                 [
                     'attribute' => 'Season_mod',
-                    'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Season_mod', array_filter(\yii\helpers\ArrayHelper::map(\app\models\Armors::find()->distinct('Season_mod')->orderBy(['Season_mod'=>SORT_DESC])->all(), 'Season_mod', 'Season_mod')), ['class' => 'form-control', 'prompt' => 'Выберите']),
+                    'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Season_mod', array_filter(\yii\helpers\ArrayHelper::map(\app\models\Armors::find()->distinct('Season_mod')->orderBy(['Season_mod'=>SORT_DESC])->all(), 'Season_mod', 'Season_mod')), ['class' => 'form-control', 'prompt' => 'Choose']),
                 ],
                 [
                     'attribute' => 'Equippable',
@@ -91,7 +91,7 @@ if (Yii::$app->user->isGuest) {
                         'Warlock'=> 'Warlock',
                         'Hunter'=> 'Hunter',
                         'Titan'=> 'Titan'
-                    ], ['class' => 'form-control', 'prompt' => 'Выберите']),
+                    ], ['class' => 'form-control', 'prompt' => 'Choose']),
                 ],
                 [
                     'attribute' => 'Type',
@@ -100,7 +100,7 @@ if (Yii::$app->user->isGuest) {
                             'Gauntlets'=>'Gauntlets',
                             'Chest Armor'=>'Chest Armor',
                             'Leg Armor' => 'Leg Armor'
-                    ], ['class' => 'form-control', 'prompt' => 'Выберите']),
+                    ], ['class' => 'form-control', 'prompt' => 'Choose']),
                 ],
                 [
                     'attribute' => 'Masterwork_Type',
@@ -108,7 +108,7 @@ if (Yii::$app->user->isGuest) {
                         'Void Energy Capacity' => 'Void',
                         'Solar Energy Capacity' => 'Solar',
                         'Arc Energy Capacity' => 'Arc'
-                    ], ['class' => 'form-control', 'prompt' => 'Выберите']),
+                    ], ['class' => 'form-control', 'prompt' => 'Choose']),
                 ],
                 'Mobility',
                 'Recovery',
@@ -141,7 +141,7 @@ if (Yii::$app->user->isGuest) {
                         'Intellect_Discipline' => 'Intellect+Discipline',
                         'Intellect_Strength' => 'Intellect+Strength',
                         'Discipline_Strength' => 'Discipline+Strength',
-                    ], ['class' => 'form-control', 'prompt' => 'Выберите']),
+                    ], ['class' => 'form-control', 'prompt' => 'Choose']),
                 ],
             ],
         ]); ?>

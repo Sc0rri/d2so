@@ -7,7 +7,7 @@ use yii\helpers\ArrayHelper;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 /* @var $searchModel app\models\WeaponsSearch */
 
-$this->title = 'Оружие';
+$this->title = 'Weapon';
 $this->registerJs("
     $('#show_weapon_form').on('click', function(e) {
         e.preventDefault();
@@ -24,18 +24,18 @@ if (Yii::$app->user->isGuest) {
 } else { ?>
     <h1><?= $this->title; ?></h1>
     <br/>
-    <a href="#" id="show_weapon_form">Обновлено: <?= Yii::$app->user->identity->last_sync_weapon; ?></a>
+    <a href="#" id="show_weapon_form">Updated: <?= Yii::$app->user->identity->last_sync_weapon; ?></a>
     <br/>
     <hr/>
     <div id="update_weapon_form" style="display: none;">
         <?php $form = \yii\bootstrap\ActiveForm::begin(['action' => ['site/sync-weapons'], 'options' => ['enctype' => 'multipart/form-data']]) ?>
         <?= $form->field($model, 'csv_file')->fileInput()->label(false); ?>
-        <?= \yii\bootstrap\Html::button('Синхронизироваться', ['type' => 'submit', 'class' => 'btn btn-danger']); ?>
+        <?= \yii\bootstrap\Html::button('Import', ['type' => 'submit', 'class' => 'btn btn-danger']); ?>
 
         <?php \yii\bootstrap\ActiveForm::end() ?>
         <hr/>
     </div>
-    <?= \yii\bootstrap\Html::a('Экспортировать', ['site/export-weapons']); ?>
+    <?= \yii\bootstrap\Html::a('Export', ['site/export-weapons']); ?>
     <?php
     $columns = [
         ['class' => 'yii\grid\SerialColumn'],
@@ -43,11 +43,11 @@ if (Yii::$app->user->isGuest) {
         'Name',
         [
             'attribute' => 'Type',
-            'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Type', array_filter(ArrayHelper::map(\app\models\Weapons::find()->distinct('Type')->all(), 'Type', 'Type')), ['class' => 'form-control', 'prompt' => 'Выберите']),
+            'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Type', array_filter(ArrayHelper::map(\app\models\Weapons::find()->distinct('Type')->all(), 'Type', 'Type')), ['class' => 'form-control', 'prompt' => 'Choose']),
         ],
         [
             'attribute' => 'Dmg',
-            'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Dmg', array_filter(ArrayHelper::map(\app\models\Weapons::find()->distinct('Dmg')->all(), 'Dmg', 'Dmg')), ['class' => 'form-control', 'prompt' => 'Выберите']),
+            'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Dmg', array_filter(ArrayHelper::map(\app\models\Weapons::find()->distinct('Dmg')->all(), 'Dmg', 'Dmg')), ['class' => 'form-control', 'prompt' => 'Choose']),
         ],
         'Rpm',
         [
@@ -63,7 +63,7 @@ if (Yii::$app->user->isGuest) {
             'value' => function ($data) {
                 return $data->Masterwork_Type.($data->Masterwork_Type_godroll?' <span class="badge">'.$data->Masterwork_Type_godroll.'</span>':'');
             },
-            'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Masterwork_Type', array_filter(ArrayHelper::map(\app\models\Weapons::find()->distinct('Masterwork_Type')->all(), 'Masterwork_Type', 'Masterwork_Type')), ['class' => 'form-control', 'prompt' => 'Выберите']),
+            'filter' => \yii\helpers\Html::activeDropDownList($searchModel, 'Masterwork_Type', array_filter(ArrayHelper::map(\app\models\Weapons::find()->distinct('Masterwork_Type')->all(), 'Masterwork_Type', 'Masterwork_Type')), ['class' => 'form-control', 'prompt' => 'Choose']),
         ],
         'Power_Limit',
     ];

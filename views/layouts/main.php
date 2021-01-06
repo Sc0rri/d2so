@@ -39,10 +39,10 @@ AppAsset::register($this);
     $nav_items = [];
     if (!Yii::$app->user->isGuest) {
         $nav_items = [
-            ['label' => 'Оружие', 'url' => ['/site/index']],
-            ['label' => 'Броня', 'url' => ['/site/armor']],
-            ['label' => 'Топ перков', 'url' => ['/site/perks']],
-            ['label' => 'Годроллы', 'url' => ['/site/godrolls']],
+            ['label' => 'Weapon', 'url' => ['/site/index']],
+            ['label' => 'Armor', 'url' => ['/site/armor']],
+            ['label' => 'Top perks', 'url' => ['/site/perks']],
+            ['label' => 'God rolls', 'url' => ['/site/godrolls']],
         ];
     }
 

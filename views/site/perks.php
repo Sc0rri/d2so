@@ -2,7 +2,7 @@
 
 /* @var $this yii\web\View */
 
-$this->title = 'Топ перков';
+$this->title = 'Top perks';
 
 if (Yii::$app->user->isGuest) {
     echo yii\authclient\widgets\AuthChoice::widget([

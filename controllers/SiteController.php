@@ -92,7 +92,7 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Оружие
+	 * Weapon
 	 *
 	 * @return string
 	 */
@@ -130,7 +130,7 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Броня
+	 * Armor
 	 *
 	 * @return string
 	 */
@@ -160,7 +160,7 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Топ перков
+	 * Top perks
 	 *
 	 * @return string
 	 */
@@ -329,7 +329,7 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Синхронизация оружия
+	 * Weapon sync
 	 */
 	public function actionSyncWeapons()
 	{
@@ -342,7 +342,7 @@ class SiteController extends Controller
 					Weapons::deleteAll(['user_id' => Yii::$app->user->identity->id]);
 					Usage::deleteAll();
 
-					//Обновление рейтинга
+					//usage update
 					$http_client = new Client();
 					$response = $http_client->createRequest()
 						->setMethod('GET')
@@ -453,7 +453,7 @@ class SiteController extends Controller
 							die();
 						}
 
-						//Определение годроллов
+						//weapon god rolls calculation
 						$godroll_pve = Godroll::findOne(['Name' => $weapon_model->Name, 'Type' => 'pve']);
 						if (!$godroll_pve) {
 							$godroll_pve_arr = Godroll::find()->where(['wtype' => $weapon_model->Type, 'rpm' => $weapon_model->Rpm, 'Type' => 'pve'])->all();
@@ -478,7 +478,7 @@ class SiteController extends Controller
 							if ($current_godroll) $godroll_pvp = $godroll_pvp_arr[$current_godroll];
 						}
 
-						//Сохранение перков
+						//perks save
 						if ($godroll_pve) {
 							if (trim($godroll_pve->Masterwork) == trim($weapon_model->Masterwork_Type)) {
 								$weapon_model->pve_godrolls++;
@@ -577,7 +577,7 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Получение оружия с тегами
+	 * Export weapon with tags
 	 */
 	public function actionExportWeapons()
 	{
@@ -622,7 +622,7 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Синхронизация брони
+	 * Armor sync
 	 */
 	public function actionSyncArmor()
 	{
@@ -678,7 +678,7 @@ class SiteController extends Controller
 							if (isset($this->seasons[$armors['Seasonal Mod']])) {
 								$armor_model->Season_mod = $this->seasons[$armors['Seasonal Mod']];
 							} else {
-								throw new Exception('Неизвестный сезон: ' . $armors['Seasonal Mod']);
+								throw new Exception('Unknown season: ' . $armors['Seasonal Mod']);
 							}
 						}
 
@@ -724,13 +724,13 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Експорт брони
+	 * Armor export with perks
 	 */
 	public function actionExportArmor()
 	{
-		$count = 3; //количество оставляемых единиц брони
-		$min_sum = 60; //минимальная оставляемая сумма атрибутов (без модификатора)
-		$min_sum_season = 57; //минимальная оставляемая сумма атрибутов(текущий и прошлый сезон)
+		$count = 3; //count of armors with max attr to store
+		$min_sum = 60; //minimum armor attributes sum to store (without modifiers)
+		$min_sum_season = 57; //minimum armor attributes sum to store(current and previous season)
 		$min_power = $this->power_limit[$this->current_season];
 
 		$types = [
@@ -847,7 +847,7 @@ class SiteController extends Controller
 	}
 
 	/**
-	 * Синхронизация годроллов
+	 * God rolls sync
 	 */
 	public function actionSyncGodrolls()
 	{

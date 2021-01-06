@@ -47,15 +47,15 @@ class Godroll extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'Name' => 'Название',
+            'Name' => 'Name',
             'Sight/Barrel' => 'Sight/ Barrel',
             'Mag Perk' => 'Mag Perk',
             'Perk 1' => 'Perk 1',
             'Perk 2' => 'Perk 2',
             'Masterwork' => 'Masterwork',
-            'Type' => 'Тип',
-            'wtype' => 'Тип оружия',
-            'rpm' => 'Скорострельность'
+            'Type' => 'Type',
+            'wtype' => 'Weapon type',
+            'rpm' => 'RPM'
         ];
     }
 }

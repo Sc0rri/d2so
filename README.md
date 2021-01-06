@@ -12,21 +12,21 @@ Weapon godroll highlighter
 
 Was implemented before the realization of wishlists in DIM - now not very useful.
 
-### Import godrolls
-Import godrolls from file `docs/God Roll Weapons.xlsx`.  
-![Godrolls](screenshots/godrolls.png "Godrolls import")
+### Import god rolls
+Import god rolls from file `docs/God Roll Weapons.xlsx`.  
+![God rolls](screenshots/godrolls.png "God rolls import")
 On import, the application gets weapon type and rpm from https://destinytracker.com/ by API.
 ### Import weapons from DIM
 Import user weapon from DIM CSV export `docs/destinyWeapons.csv`.
 ![Weapons](screenshots/weapons.png "Weapons import\export")
-Green cell - godroll, red row - a weapon not in godrolls list
+Green cell - godroll, red row - a weapon not in god rolls list
 
 When importing, the application:
 - gets PVP and PVE usage from https://destinytracker.com/ by API.
-- counts PVP and PVE weapon godrolls based on imported godrolls list, highlights them.
-- if the weapon doesn't exist in godrolls list then weapon godrolls is calculated based on weapon type and rpm.
+- counts PVP and PVE weapon god rolls based on imported god rolls list, highlights them.
+- if the weapon doesn't exist in god rolls list then weapon god rolls is calculated based on weapon type and rpm.
 ### Export tags for DIM
-Export tags with godrolls count for the weapon in DIM CSV format  
+Export tags with god rolls count for the weapon in DIM CSV format  
 
 Armor stats maximizer
 ------------

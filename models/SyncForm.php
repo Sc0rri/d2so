@@ -23,6 +23,6 @@ class SyncForm extends Model
     }
     public function attributeLabels()
     {
-        return ['csv_file'=>'Файл'];
+        return ['csv_file'=>'File'];
     }
 }
